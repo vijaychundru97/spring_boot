@@ -1,6 +1,6 @@
-FROM openjdk:8-jdk-alpine
+FROM alpine:3.7
 
-RUN apt install gnupg2 pass
+RUN apk install gnupg2 pass
 
 COPY target/*.jar app.jar
 
