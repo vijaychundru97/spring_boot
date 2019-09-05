@@ -28,11 +28,11 @@ pipeline {
 				      // following commands will be executed within logged docker registry
 				      //sh 'docker push ' + imageBuilt
 				//}
-				
+				sh 'docker login -u "praveenellaiyan" -p "Neevarp@Docker23"'
                 script {
-                    docker.withRegistry('', registryCredentials) {
+                    //docker.withRegistry('', registryCredentials) {
       					imageBuilt.push()
-    				}
+    				//}
                 }
 
             }
