@@ -1,7 +1,7 @@
 FROM alpine:3.7
 
-RUN apt update \
-    && apt install gnupg2 pass
+RUN apk update \
+    && apk install -y gnupg2 pass
 #RUN apt install gnupg2 pass
 
 COPY target/*.jar app.jar
