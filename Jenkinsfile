@@ -29,16 +29,12 @@ pipeline {
 				      //sh 'docker push ' + imageBuilt
 				//}
 				
-                //script {
-                    //docker.withRegistry(registry, registryCredentials) {
-      					//imageBuilt.push()
-    				//}
-                //}
-                
-                docker.withRegistry(registry, registryCredentials) {
-			        /* Push the container to the custom Registry */
-			        imageBuilt.push()
-    			}
+                script {
+                    docker.withRegistry('', registryCredentials) {
+      					imageBuilt.push()
+    				}
+                }
+
             }
         }
     }
