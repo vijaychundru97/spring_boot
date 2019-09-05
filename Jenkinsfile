@@ -17,7 +17,7 @@ pipeline {
         }
 	stage('publish') {
             steps {
-                sh 'docker push praveenellaiyan/jenkins-springboot-app:app'
+                sh 'docker push praveenellaiyan/app:latest'
             }
         }
     }
