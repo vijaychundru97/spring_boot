@@ -1,16 +1,33 @@
-node {
-
-  checkout scm
-  def dockerImage
-
-  stage('Build image') {
-    dockerImage = docker.build("praveenellaiyan/jenkins-springboot-app:myapp")
-  }
-
-  stage('Push image') {
-    docker.withRegistry('https://registry.hub.docker.com', 'docker') {
-      dockerImage.push()
+def imageBuilt
+pipeline {
+	environment {
+	    registry = "https://registry.hub.docker.com"
+	    registryCredentials = "docker"
+	}
+	
+    agent any
+    
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+		stage('package') {
+            steps {
+                script {
+                    imageBuilt = docker.build("praveenellaiyan/jenkins-springboot-app:myapp")
+                }
+            }
+        }
+		stage('publish') {
+            steps {				
+                script {
+                    docker.withRegistry(registry, registryCredentials) {
+      					imageBuilt.push()
+    				}
+                }
+            }
+        }
     }
-  }   
-
 }
