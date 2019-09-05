@@ -12,12 +12,12 @@ pipeline {
         }
 	stage('package') {
             steps {
-                sh 'docker build .'
+                sh 'docker build -t praveenellaiyan/app .'
             }
         }
 	stage('publish') {
             steps {
-                echo 'publish stage completed'
+                sh 'docker push praveenellaiyan/jenkins-springboot-app:app'
             }
         }
     }
