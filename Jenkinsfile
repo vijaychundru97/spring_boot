@@ -23,15 +23,22 @@ pipeline {
 		stage('publish') {
             steps {
                 //sh 'docer push praveenellaiyan/jenkins-springboot-app:app:1.0'
-                withDockerRegistry([ credentialsId: registryCredentials, url: "" ]) {
+                
+                //withDockerRegistry([ credentialsId: registryCredentials, url: "" ]) {
 				      // following commands will be executed within logged docker registry
-				      sh 'docker push ' + imageBuilt
-				}
+				      //sh 'docker push ' + imageBuilt
+				//}
+				
                 //script {
                     //docker.withRegistry(registry, registryCredentials) {
       					//imageBuilt.push()
     				//}
                 //}
+                
+                docker.withRegistry(registry, registryCredentials) {
+			        /* Push the container to the custom Registry */
+			        imageBuilt.push()
+    			}
             }
         }
     }
