@@ -1,7 +1,7 @@
 def imageBuilt
 pipeline {
 	environment {
-	    registry = "https://cloud.docker.com/repository/docker/praveenellaiyan/jenkins-springboot-app"
+	    registry = "https://registry.hub.docker.com"
 	    registryCredentials = "docker"
 	}
 	
