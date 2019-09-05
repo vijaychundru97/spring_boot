@@ -12,12 +12,12 @@ pipeline {
         }
 	stage('package') {
             steps {
-                sh 'docker build -t praveenellaiyan/app .'
+                sh 'docker build -t praveenellaiyan/app:1.0 .'
             }
         }
 	stage('publish') {
             steps {
-                sh 'docker push praveenellaiyan/app:latest'
+                sh 'docker push praveenellaiyan/jenkins-springboot-app:app:1.0'
             }
         }
     }
