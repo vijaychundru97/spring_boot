@@ -1,14 +1,18 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+	environment {
+	    registry = "https://cloud.docker.com/repository/docker/praveenellaiyan/jenkins-springboot-app"
+	    registryCredentials = "docker"
+	}
+    agent any
     stages {
         stage('build') {
             steps {
-                echo 'build stage completed'
+                sh 'mvn clean install'
             }
         }
-	stage('test') {
+	stage('package') {
             steps {
-                echo 'test stage completed'
+                sh 'docker build .'
             }
         }
 	stage('publish') {
