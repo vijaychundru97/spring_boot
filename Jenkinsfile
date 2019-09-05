@@ -4,6 +4,7 @@ pipeline {
 	    registryCredentials = "docker"
 	}
     agent any
+    def imageBuilt
     stages {
         stage('build') {
             steps {
@@ -12,12 +13,19 @@ pipeline {
         }
 	stage('package') {
             steps {
-                sh 'docker build -t praveenellaiyan/app:1.0 .'
+                script {
+                    imageBuilt = docker.build("praveenellaiyan/jenkins-springboot-app:myapp")
+                }
             }
         }
 	stage('publish') {
             steps {
-                sh 'docker push praveenellaiyan/jenkins-springboot-app:app:1.0'
+                //sh 'docer push praveenellaiyan/jenkins-springboot-app:app:1.0'
+                script {
+                    docker.withRegistry(registry, registryCredentials) {
+      					imageBuilt.push()
+    				}
+                }
             }
         }
     }
