@@ -47,3 +47,4 @@ Example Project - jenkins-pipeline-spring-boot-app
 
 Illustrate jenkins pipeline job to build, test, publish and deploy sample spring boot application.
 ````
+![Screenshot from 2019-09-07 16-38-03](https://user-images.githubusercontent.com/36845597/64474134-f1de9180-d18d-11e9-985b-b428a6ecfcbf.png)
