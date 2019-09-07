@@ -1,8 +1,7 @@
-FROM alpine:3.7
+FROM openjdk:8-jdk-alpine
 
 RUN apk update \
     && apk add --no-cache gnupg
-#RUN apt install gnupg2 pass
 
 COPY target/*.jar app.jar
 

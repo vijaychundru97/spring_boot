@@ -1,30 +1,35 @@
-def imageBuilt
+def artifact
 pipeline {
+	// configure environmental variables
 	environment {
 	    registry = "https://registry.hub.docker.com"
 	    registryCredentials = "docker"
 	}
 	
+	// instruct jenkins to allocate executor and workspace for entire pipeline
     agent any
     
     stages {
-        stage('build') {
+    	// compile and generate single executable jar with all dependencies
+		stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn install'
             }
         }
-		stage('package') {
+        // build docker image of an application
+		stage('Package') {
             steps {
                 script {
-                    imageBuilt = docker.build("praveenellaiyan/jenkins-springboot-app:myapp")
+                    artifact = docker.build("praveenellaiyan/jenkins-springboot-app:myapp")
                 }
             }
         }
-		stage('publish') {
+        // push built docker image to docker hub
+		stage('Publish') {
             steps {				
                 script {
                     docker.withRegistry(registry, registryCredentials) {
-      					imageBuilt.push()
+      					artifact.push()
     				}
                 }
             }
