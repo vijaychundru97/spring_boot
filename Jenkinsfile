@@ -8,6 +8,10 @@ pipeline {
 	
 	// instruct jenkins to allocate executor and workspace for entire pipeline
     agent any
+	
+    tools{
+		maven 'maven'
+	}	
     
     stages {
     	// compile and generate single executable jar with all dependencies
