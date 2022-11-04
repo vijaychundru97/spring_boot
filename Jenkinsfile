@@ -29,7 +29,7 @@ pipeline {
         // push built docker image to docker hub
 		stage('Publish') {
             steps {
-		 bat 'docker login -u vijaychundru --password-std-in'   
+		 bat 'docker login -u vijaychundru --password-Venkatach@789'   
                  bat 'docker push vijaychundru/jenkins-springboot-app:myapp'
 	          }
         }
