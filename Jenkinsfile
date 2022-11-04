@@ -21,11 +21,9 @@ pipeline {
             }
         }
         // build docker image of an application
-		stage('Package') {
+      stage('Package') {
             steps {
-              
-                    bat 'docker build -t vijaychundru97/jenkins-springboot-app:myapp .'
-                
+                bat 'docker build -t vijaychundru97/jenkins-springboot-app:myapp .'
             }
         }
         // push built docker image to docker hub
