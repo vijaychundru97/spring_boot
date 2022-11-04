@@ -31,7 +31,6 @@ pipeline {
             steps {				
                  bat 'docker push vijaychundru97/jenkins-springboot-app:myapp'
 	          }
-            }
         }
     }
 }
