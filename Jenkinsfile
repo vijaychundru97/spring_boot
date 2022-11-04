@@ -1,9 +1,9 @@
 def artifact
 pipeline {
 	// configure environmental variables
-	environment {
-	    registry = "https://registry.hub.docker.com"
-	    registryCredentials = "docker"
+//	environment {
+//	    registry = "https://registry.hub.docker.com"
+//	    registryCredentials = "docker"
 	}
 	
 	// instruct jenkins to allocate executor and workspace for entire pipeline
@@ -24,7 +24,7 @@ pipeline {
 		stage('Package') {
             steps {
                 script {
-                    artifact = docker.build("praveenellaiyan/jenkins-springboot-app:myapp")
+                    bat 'docker build -t vijaychundru97/jenkins-springboot-app:myapp .'
                 }
             }
         }
