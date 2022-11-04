@@ -35,7 +35,7 @@ pipeline {
         }
 	    	stage('run') {
             steps {
-                 bat 'docker run -it -d -p 8787:8080 vijaychundru/jenkins-springboot-app:myapp'
+                 bat 'docker run -it -d -p 8081:8080 vijaychundru/jenkins-springboot-app:myapp'
 	          }
         }
     }
