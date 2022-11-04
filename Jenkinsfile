@@ -29,11 +29,8 @@ pipeline {
         // push built docker image to docker hub
 		stage('Publish') {
             steps {				
-                script {
-                    docker.withRegistry(registry, registryCredentials) {
-      					artifact.push()
-    				}
-                }
+                 bat 'docker push vijaychundru97/jenkins-springboot-app:myapp'
+	          }
             }
         }
     }
